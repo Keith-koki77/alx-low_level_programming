@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - fibonacci <3
  *
  * Purpose - no hardcore
  *
- * Return (success)
+ * Return: Always 0 (success)
  */
 int main(void)
 {
