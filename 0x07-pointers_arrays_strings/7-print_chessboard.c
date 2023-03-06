@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * print_chessboard - Entry point
  * @a: array
@@ -15,7 +14,7 @@ void print_chessboard(char (*a)[8])
 		for (y = 0; y < 8; y++)
 		{
 			_putchar(a[x][y]);
-			_putchar('\n');
 		}
+		_putchar('\n');
 	}
 }
