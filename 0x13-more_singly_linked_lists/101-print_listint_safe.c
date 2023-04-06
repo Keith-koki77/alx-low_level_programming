@@ -1,30 +1,74 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints a linked list.
- * @head: head of the linked list
+ * free-listp - frees a linked list
+ * @head: head of linked list
  *
- * Return: void.
+ * Return: nothing.
+ *
+ */
+void free_listp(listp_t **head)
+{
+	listp_t *tmp;
+	listp_t *crr;
+
+	if (head != NULL)
+	{
+		crr = *head;
+
+		while ((tmp = crr) != NULL)
+		{
+			crr = crr->next;
+			free(tmp);
+		}
+		*head = NULL;
+	}
+}
+
+/**
+ * print_listint_safe - prints a lnked list
+ * @head: head of linked list
+ *
+ * Return: number of nodes in the list
  *
  */
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t numnodes = 0;
-	const listint_t *curr = head, *temp;
+	listp_t *ptr, *node1, *node2;
 
-	while (curr != NULL)
+	ptr = NULL;
+
+	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *)curr, curr->n);
-		numnodes++;
+		node1 = malloc(sizeof(listp_t));
 
-		temp = curr;
-		curr = curr->next;
-
-		if (temp <= curr)
-		{
-			printf("-> [%p] %d\n", (void *)curr, curr->n);
+		if (node1 == NULL)
 			exit(98);
+
+		node1->p = (void *)head;
+		node1->next = ptr;
+		ptr = node1;
+
+		node2 = ptr;
+
+		while (node2->next != NULL)
+		{
+			node2 = node2->next;
+
+			if (head == node2->p)
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&ptr);
+				return (numnodes);
+			}
 		}
+
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
+		numnodes++;
 	}
+
+	free_listp(&ptr);
 	return (numnodes);
 }
