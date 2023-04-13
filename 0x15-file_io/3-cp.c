@@ -4,9 +4,8 @@
 
 static ssize_t read_file(char *file, char **buff, int fd);
 static void write_copy(char *file, int fd, char *buff, int len);
-
 /**
- * main - this program content of one file to another
+ * main - this program copies content of one file to another
  * @argc: number of arguments.
  * @argv: argument values.
  *
@@ -40,7 +39,7 @@ int main(int argc, char *argv[])
 		if (!rd)
 			break;
 		/*Write buffer to target file*/
-		write_copy(file_1, fd, buff, rd);
+		write_copy(file_1, fd_1, buff, rd);
 	}
 
 	free(buff);
@@ -100,7 +99,7 @@ static ssize_t read_file(char *file, char **buff, int fd)
 /**
  * write_copy - writes the buffer to a file.
  * @file: the destinated file of the buffer contents.
- * fd: file descriptor of @fd.
+ * @fd: file descriptor of @fd.
  * @buff: pointer to buffer.
  * @len: length of current buffer.
  */
