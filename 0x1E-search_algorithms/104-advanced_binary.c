@@ -3,6 +3,13 @@
 int recursive_binary(int *array, int low, int high, int value);
 
 /**
+ * advanced_binary - function that searches through an array
+ * using the advanced binary algorithm
+ * @array: pointer to the array
+ * @size: size of the array to be searched
+ * @value: value in the array to be sorted.
+ *
+ * Return: the index where the value is located. Else -1
  */
 int advanced_binary(int *array, size_t size, int value)
 {
@@ -16,6 +23,14 @@ int advanced_binary(int *array, size_t size, int value)
 }
 
 /**
+ * recursive_binary - function that searches through an array
+ * using the recursive binary algorithm
+ * @array: pointer to array
+ * @low: first position on the array
+ * @high: last position on the array
+ * @value: value in the array to be sorted
+ *
+ * Return: Index where the value is located, else -1
  */
 int recursive_binary(int *array, int low, int high, int value)
 {
